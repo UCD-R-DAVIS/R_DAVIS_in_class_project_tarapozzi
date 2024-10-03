@@ -1,3 +1,11 @@
+---
+editor_options:
+  markdown:
+    wrap: 72
+    eval: false
+output: pdf_document
+---
+
 # Project Management 
 
 -   Understand motivation for code and data management
@@ -12,15 +20,19 @@
 
 Working directory
 
--   R needs to know where you are within your computer, which is referred to as the *working directory*
+-   R needs to know where you are within your computer, which is
+    referred to as the *working directory*
 
--   R will think of everything in your computer as located relative to your working directory
+-   R will think of everything in your computer as located relative to
+    your working directory
 
--   You automatically set the working directory to the folder containing the .RProject file
+-   You automatically set the working directory to the folder containing
+    the .RProject file
 
 File paths
 
--   the text that says where a file is located and the backslash indicates a different level
+-   the text that says where a file is located and the backslash
+    indicates a different level
 
 -   two type: absolute and relative
 
@@ -31,8 +43,8 @@ File paths
         -   ie "\~/data/datafile.csv"
 
 ```{r}
-getwd()
-setwd()
+#getwd()
+#setwd()
 ```
 
 # Code and Data organization
@@ -47,17 +59,24 @@ setwd()
 
     -   ideal to have a separate folder for each output type
 
-        -   **data:** Ideally .csv files as these are flat, transparent, and universal. You may have other specialized formats as well. .rda and .rds are R-specific data files but you never *need* to use these.
+        -   **data:** Ideally .csv files as these are flat, transparent,
+            and universal. You may have other specialized formats as
+            well. .rda and .rds are R-specific data files but you never
+            *need* to use these.
 
-        -   **code (or script):** .R files, perhaps .do files if Stata is your thing, .py files for Python, etc.
+        -   **code (or script):** .R files, perhaps .do files if Stata
+            is your thing, .py files for Python, etc.
 
-        -   **results:** .png or .pdf files for plots; .tex or .txt files for tables
+        -   **results:** .png or .pdf files for plots; .tex or .txt
+            files for tables
 
-        -   **papers:** .tex if you write in LaTeX, .doc for Word, .Rmd for RMarkdown, and .pdf or .html rendered documents.
+        -   **papers:** .tex if you write in LaTeX, .doc for Word, .Rmd
+            for RMarkdown, and .pdf or .html rendered documents.
 
 ## RStudio Projects 
 
-RStudio uses the .Rproj file to help keep everything organized in a self-contained, reproducible package
+RStudio uses the .Rproj file to help keep everything organized in a
+self-contained, reproducible package
 
 Helpful folders: data, data_output, documents, fig_output, scripts
 

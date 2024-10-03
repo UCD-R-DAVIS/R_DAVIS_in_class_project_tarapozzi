@@ -1,7 +1,9 @@
 ---
-editor_options: 
-  markdown: 
+editor_options:
+  markdown:
     wrap: 72
+    eval: false
+output: pdf_document
 ---
 
 # How R thinks about data 
@@ -38,14 +40,14 @@ editor_options:
 -   bind values together with c() function
 
 ```{r}
-weight <- c(50, 60, 65, 82) 
-weight
+weight_g <- c(50, 60, 65, 82) 
+weight_g
 
 animals <- c("mouse", "rat", "dog") 
 animals
 
 # inspection functions
-length(weight)
+length(weight_g)
 length(animals) 
 class(weight_g) 
 class(animals) 
@@ -53,9 +55,9 @@ str(weight_g)
 str(animals)
 
 # change vectors
-weight <- c(weight, 90) # add to the end of the vector 
+weight_g <- c(weight_g, 90) # add to the end of the vector 
 
-weight <- c(30, weight) # add to the beginning of the vector weight_g
+weight_g <- c(30, weight_g) # add to the beginning of the vector weight_g
 
 ```
 
@@ -100,9 +102,10 @@ combined_logical <- c(num_logical, char_logical)
     provide one or several indices in square brackets.
 
     ```{r}
-    animals <- c("mouse", "rat", "dog", "cat") animals[2] # could be read as "return the second value in animals"
+    animals <- c("mouse", "rat", "dog", "cat") 
+    animals[2] # could be read as "return the second value in animals"
 
-    animals[c(3, 2)] # could be read as "return the third and second values in animals" weight
+    animals[c(3, 2)] # could be read as "return the third and second values in animals" weight_g
 
     #We can also repeat the indices to create an object with more elements than the original one: 
     animals[c(1, 2, 3, 2, 1, 4)]
@@ -117,15 +120,16 @@ combined_logical <- c(num_logical, char_logical)
 -   logical vectors are usually an intermediate step in subsetting
 
 ```{r}
-weight <- c(21, 34, 39, 54, 55) weight[c(TRUE, FALSE, TRUE, TRUE, FALSE)] # could be read as "give me the first value, not the second value, etc."
+weight_g <- c(21, 34, 39, 54, 55) 
+weight_g[c(TRUE, FALSE, TRUE, TRUE, FALSE)] # could be read as "give me the first value, not the second value, etc."
 
-weight > 50 # will return logicals with TRUE for the indices that meet the condition
+weight_g > 50 # will return logicals with TRUE for the indices that meet the condition
 
 # if we want to actually select values about 50
-weight[weight > 50]
+weight_g[weight_g > 50]
 
 #You can combine multiple tests using & (both conditions are true, AND) or | (at least one of the conditions is true, OR): 
-weight[weight < 30 | weight > 50]
+weight_g[weight_g < 30 | weight_g > 50]
 
 ## different symbols
 # >= greater than
@@ -133,12 +137,15 @@ weight[weight < 30 | weight > 50]
 # == equal
 # %in% within
 
-# Exmple
-animals <- c("mouse", "rat", "dog", "cat") animals[animals == "cat" | animals == "rat"] # returns both rat and cat
+# Example
+animals <- c("mouse", "rat", "dog", "cat") 
+animals[animals == "cat" | animals == "rat"] # returns both rat and cat
 animals
 
 # VS
+# see what values in a specific list are within a bigger list
 animals %in% c("rat", "cat", "dog", "duck", "goat")
+animals[animals %in% c("rat", "cat", "dog", "duck", "goat")]
 
 ## Challenge
 # why does this return TRUE?
@@ -252,10 +259,12 @@ vectors will be important when working with these data structures.
     nlevels(animals) 
 
     ## current order 
-    animals <- factor(animals, levels = c("goose", "duck")) animals # after re-ordering
+    animals
+    animals <- factor(animals, levels = c("goose", "duck")) 
+    animals # after re-ordering
     ```
 
-## convert factors
+## Convert factors
 
 ```{r}
 as.character(animals) # returns index values of the characters 
@@ -263,6 +272,24 @@ as.character(animals) # returns index values of the characters
 year_fct <- factor(c(1990, 1983, 1977, 1998, 1990)) #WRONG 
 as.numeric(year_fct)
 as.numeric(as.character(year_fct)) # This does the trick
+```
+
+## Renaming factors
+
+```{r}
+# rename using the levels function
+levels(animals)
+
+# get the value
+levels(animals)[1]
+
+# let's make it capital
+levels(animals)[1] <- "GOOSE"
+animals
+
+# change both
+levels(animals) <- c("GOOSE", "DUCK")
+animals
 ```
 
 ### Challenge
