@@ -6,7 +6,7 @@ editor_options:
 output: pdf_document
 ---
 
-# How R thinks about data 
+# How R thinks about data
 
 -   Be able to describe the different data types R uses
 
@@ -96,7 +96,7 @@ combined_logical <- c(num_logical, char_logical)
     diagram that represents the hierarchy of how these data types are
     coerced?
 
-# Subsetting 
+# Subsetting
 
 -   If we want to extract one or several values from a vector, we must
     provide one or several indices in square brackets.
@@ -152,7 +152,7 @@ animals[animals %in% c("rat", "cat", "dog", "duck", "goat")]
 "four" > "five"
 ```
 
-## Vector Math 
+## Vector Math
 
 -   You can add a number to a vector of numbers like this:
 
