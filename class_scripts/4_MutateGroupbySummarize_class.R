@@ -1,6 +1,7 @@
 # Homework 3 Review -----
 #Load your survey data frame with the read.csv() function. Create a new data frame called surveys_base with only the species_id, the weight, and the plot_type columns. Have this data frame only be the first 5,000 rows. 
 
+
 #Convert both species_id and plot_type to factors. Remove all rows where there is an NA in the weight column. 
 
 
@@ -34,7 +35,6 @@ str(surveys)
 surveys <- surveys %>%
   mutate(weight_kg = weight/1000)
 
-
 # Add other columns
 
 
@@ -44,26 +44,23 @@ surveys <- surveys %>%
 # Group_by and summarize ----
 # A lot of data manipulation requires us to split the data into groups, apply some analysis to each group, and then combine the results
 # group_by and summarize functions are often used together to do this
-
-# we can calculate mean by certain groups
-
 # group_by works for columns with categorical variables 
+# we can calculate mean by certain groups
 surveys %>%
   group_by(sex) %>%
-  summarize(mean_weight = mean(weight, na.rm = TRUE))
+  mutate(mean_weight = mean(weight, na.rm = TRUE)) 
 
 
 # multiple groups
+surveys %>%
+  group_by(sex, species_id) %>%
+  summarize(mean_weight = mean(weight, na.rm = TRUE))
 
 
 # remove na's
-surveys %>%
-  filter(!is.na(weight)) %>%
-  group_by(sex, species_id) %>%
-  summarise(mean_weight = mean(weight), 
-            min_weight = min(weight)) %>%
-  print(n=15) 
 
+
+# sort/arrange order a certain way
 
 
 # Challenge
